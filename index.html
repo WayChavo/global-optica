@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Óptica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Banner -->
+  <header class="banner">
+    <div class="banner-content">
+      <img src="https://encurtador.com.br/Rmtef" alt="Logo GLOBAL ÓPTICA" class="logo">
+      <h1>Global Óptica</h1>
+      <p class="slogan">Tradição e Qualidade</p>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="serviços.html">Serviços</a></li>
+      <li><a href="produtos.html">Produtos</a></li>
+    </ul>
+  </nav>
+
+  <section class="vitrine-flex">
+    <div class="vitrine-imagem">
+      <img src="http://bit.ly/4my3k3t" alt="Fachada da loja" class="imagem-quadrada">
+    </div>
+    <div class="vitrine-texto">
+      <h2>Conheça a Global Óptica</h2>
+      <p>Localizada em Solonópole, oferecemos atendimento personalizado e uma seleção incrível de óculos e lentes. Venha
+        nos visitar!</p>
+    </div>
+  </section>
+
+
+  <!-- Serviços -->
+  <section class="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li>Consultas com especialistas</li>
+      <li>Óculos de grau e solares</li>
+      <li>Lentes de contato</li>
+      <li>Manutenção e ajustes</li>
+    </ul>
+  </section>
+
+  <table id="tabela-consultas">
+    <thead>
+      <tr>
+        <th>Dia</th>
+        <th>Horário</th>
+        <th>Especialista</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">Quinta-feira</td>
+        <td contenteditable="true">08h às 12h</td>
+        <td contenteditable="true"></td> <!-- sem nome -->
+      </tr>
+      <tr>
+        <td contenteditable="true">Sexta-feira</td>
+        <td contenteditable="true">13h às 17h</td>
+        <td contenteditable="true"></td> <!-- sem nome -->
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="botao-centralizado">
+    <button onclick="salvarTabela()">Salvar Alterações</button>
+  </div>
+  <p id="mensagem-sucesso" style="color: green; text-align: center; display: none;">Alterações salvas com sucesso!</p>
+
+
+  <!-- Depoimentos -->
+  <section class="depoimentos">
+    <h2>O que dizem nossos clientes</h2>
+    <blockquote>"Atendimento excelente e produtos de qualidade!" — Ana Paula</blockquote>
+    <blockquote>"Meus óculos ficaram perfeitos. Recomendo demais!" — Carlos Mendes</blockquote>
+  </section>
+
+  <!-- Galeria de Produtos -->
+  <section class="galeria">
+    <h2>Galeria de Produtos</h2>
+    <div class="imagens-galeria">
+      <img src="https://via.placeholder.com/200x150?text=Óculos+1" alt="Óculos 1">
+      <img src="https://via.placeholder.com/200x150?text=Óculos+2" alt="Óculos 2">
+      <img src="https://via.placeholder.com/200x150?text=Óculos+3" alt="Óculos 3">
+    </div>
+  </section>
+
+  <!-- Mapa Interativo -->
+  <section class="mapa">
+    <h2>Como chegar</h2>
+    <iframe src="https://www.google.com/maps?q=R.+Antônio+Gonçalves+Dantas,+48,+Solonópole,+CE&output=embed"
+      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <section class="form-agendamento">
+    <h2>Agende sua consulta</h2>
+    <form id="form-agendamento">
+      <input type="text" id="nome" placeholder="Seu nome" required>
+      <input type="tel" id="telefone" placeholder="Telefone para contato" required>
+      <select id="dia" required>
+        <option value="">Escolha o dia</option>
+        <option value="Quinta-feira">Quinta-feira</option>
+        <option value="Sexta-feira">Sexta-feira</option>
+      </select>
+      <button type="submit">Enviar para WhatsApp</button>
+    </form>
+  </section>
+
+
+  <!-- Rodapé -->
+  <footer class="rodape">
+    <div class="rodape-conteudo">
+      <h3>GLOBAL ÓPTICA</h3>
+      <p>📍 R. Antônio Gonçalves Dantas, 48 – Centro<br>Solonópole, CE</p>
+      <p>📞 (88) 9978-8417</p>
+      <a href="https://wa.me/558899788417" target="_blank" class="btn-whatsapp">Fale pelo WhatsApp</a>
+      <a href="https://wa.me/558881277605" target="_blank" class="btn-whatsapp">Entre em contato</a>
+    </div>
+    <div class="rodape-direitos">
+      <p>&copy; 2025 GLOBAL ÓPTICA — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+  <script src="agenda.js"></script>
+</body>
+
+</html>
