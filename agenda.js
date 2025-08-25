@@ -1,56 +1,76 @@
-function salvarTabela() {
-  const tabela = document.getElementById("tabela-consultas");
-  const linhas = tabela.querySelectorAll("tbody tr");
-  const dados = [];
+const tabela = document.getElementById("tabela-consultas").querySelector("tbody");
 
-  linhas.forEach(linha => {
-    const celulas = linha.querySelectorAll("td");
-    const linhaDados = [];
-    celulas.forEach(celula => {
-      linhaDados.push(celula.textContent.trim());
+// Dados iniciais ou carregados do localStorage
+let agendaConsultas = JSON.parse(localStorage.getItem("agendaConsultas")) || [
+  ["Quinta-feira", "08h às 12h", "Dr. Francisco"],
+  ["Sexta-feira", "08h às 17h", "Dr. Francisco"]
+];
+
+function renderizarTabela() {
+  tabela.innerHTML = "";
+  agendaConsultas.forEach((linha, i) => {
+    const tr = document.createElement("tr");
+
+    linha.forEach((valor, j) => {
+      const td = document.createElement("td");
+      td.textContent = valor;
+      td.contentEditable = true;
+      td.addEventListener("blur", () => {
+        agendaConsultas[i][j] = td.textContent.trim();
+        salvarTabela(); // Salva automaticamente ao editar
+      });
+      tr.appendChild(td);
     });
-    dados.push(linhaDados);
-  });
 
-  localStorage.setItem("agendaConsultas", JSON.stringify(dados));
+    const tdRemover = document.createElement("td");
+    tdRemover.innerHTML = `<button onclick="removerLinha(${i})">🗑</button>`;
+    tr.appendChild(tdRemover);
+
+    tabela.appendChild(tr);
+  });
+}
+
+function adicionarLinha() {
+  agendaConsultas.push(["", "", ""]);
+  salvarTabela();
+  renderizarTabela();
+}
+
+function removerLinha(index) {
+  agendaConsultas.splice(index, 1);
+  salvarTabela();
+  renderizarTabela();
+}
+
+function salvarTabela() {
+  localStorage.setItem("agendaConsultas", JSON.stringify(agendaConsultas));
 
   const mensagem = document.getElementById("mensagem-sucesso");
-  mensagem.style.display = "block";
-  setTimeout(() => {
-    mensagem.style.display = "none";
-  }, 3000);
+  if (mensagem) {
+    mensagem.style.display = "block";
+    setTimeout(() => {
+      mensagem.style.display = "none";
+    }, 3000);
+  }
 }
 
 window.onload = function () {
-  const dadosSalvos = JSON.parse(localStorage.getItem("agendaConsultas"));
-  if (dadosSalvos) {
-    const tabela = document.getElementById("tabela-consultas");
-    const linhas = tabela.querySelectorAll("tbody tr");
-    dadosSalvos.forEach((linhaDados, i) => {
-      const celulas = linhas[i].querySelectorAll("td");
-      linhaDados.forEach((valor, j) => {
-        celulas[j].textContent = valor;
-      });
-    });
-  }
+  renderizarTabela();
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("form-agendamento");
+// WhatsApp agendamento
+document.getElementById("botao-direto").addEventListener("click", function () {
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const dia = document.getElementById("dia").value;
+  const numero = document.getElementById("numero").value;
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+  if (!nome || !telefone || !dia || !numero) {
+    alert("Por favor, preencha todos os campos antes de enviar.");
+    return;
+  }
 
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
-    const dia = document.getElementById("dia").value;
-
-    const mensagem = `Olá! Gostaria de agendar uma consulta.\n\nNome: ${nome}\nTelefone: ${telefone}\nDia: ${dia}`;
-    const numero = "558899962081"; // Substitua pelo número desejado
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-
-    window.open(url, "_blank");
-  });
+  const mensagem = `Olá! Gostaria de agendar uma consulta.\n\nNome: ${nome}\nTelefone: ${telefone}\nDia: ${dia}`;
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, "_blank");
 });
-
-

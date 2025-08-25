@@ -77,22 +77,17 @@
     <button onclick="salvarTabela()">Salvar Alterações</button>
   </div>
   <p id="mensagem-sucesso" style="color: green; text-align: center; display: none;">Alterações salvas com sucesso!</p>
-
-
-  <!-- Depoimentos -->
-  <section class="depoimentos">
-    <h2>O que dizem nossos clientes</h2>
-    <blockquote>"Atendimento excelente e produtos de qualidade!" — Ana Paula</blockquote>
-    <blockquote>"Meus óculos ficaram perfeitos. Recomendo demais!" — Carlos Mendes</blockquote>
-  </section>
+  <div class="botao-centralizado">
+    <button onclick="adicionarLinha()">Adicionar Horário</button>
+  </div>
 
   <!-- Galeria de Produtos -->
   <section class="galeria">
     <h2>Galeria de Produtos</h2>
     <div class="imagens-galeria">
-      <img src="https://via.placeholder.com/200x150?text=Óculos+1" alt="Óculos 1">
-      <img src="https://via.placeholder.com/200x150?text=Óculos+2" alt="Óculos 2">
-      <img src="https://via.placeholder.com/200x150?text=Óculos+3" alt="Óculos 3">
+      <img src="http://bit.ly/47nUVuX" alt="Óculos 1">
+      <img src="https://encurtador.com.br/RkElf" alt="Óculos 2">
+      <img src="https://encurtador.com.br/ccws5" alt="Óculos 3">
     </div>
   </section>
 
@@ -113,7 +108,13 @@
         <option value="Quinta-feira">Quinta-feira</option>
         <option value="Sexta-feira">Sexta-feira</option>
       </select>
-      <button type="submit">Enviar para WhatsApp</button>
+      <select id="numero" required>
+        <option value="">Escolha o número</option>
+        <option value="558899788417">(88) 9978-8417</option>
+        <option value="558881277605">(88) 8127-7605</option>
+        <option value="558896314005">(88) 9631-4005</option>
+      </select>
+       <button type="button" id="botao-direto">Enviar direto para WhatsApp</button>
     </form>
   </section>
 

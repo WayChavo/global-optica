@@ -462,27 +462,6 @@ button:hover {
   font-weight: bold;
 }
 
-/* Depoimentos */
-.depoimentos {
-  background-color: #f0f8ff;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.depoimentos h2 {
-  font-size: 28px;
-  color: #0057b7;
-  margin-bottom: 20px;
-}
-
-.depoimentos blockquote {
-  font-style: italic;
-  font-size: 18px;
-  margin: 10px auto;
-  max-width: 600px;
-  color: #333;
-}
-
 /* Galeria de Produtos */
 .galeria {
   background-color: #fff;
@@ -495,12 +474,26 @@ button:hover {
   color: #003366;
   margin-bottom: 20px;
 }
-
 .imagens-galeria {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.imagens-galeria img {
+  width: 220px;       /* largura fixa */
+  height: auto;       /* mantém proporção */
+  object-fit: cover;  /* evita distorção */
+  border-radius: 8px; /* cantos arredondados */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 600px) {
+  .imagens-galeria img {
+    width: 100%;
+    max-width: 300px;
+  }
 }
 
 .imagens-galeria img {
@@ -701,4 +694,27 @@ button:hover {
     font-size: 15px;
     padding: 8px 16px;
   }
+}
+#botao-direto {
+  background-color: #25D366; /* verde WhatsApp */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#botao-direto:hover {
+  background-color: #1ebe5d;
+}
+
+#botao-direto::before {
+  content: "📲";
+  font-size: 18px;
 }
